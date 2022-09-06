@@ -1,6 +1,6 @@
 <template>
   <img
-    class="hidden absolute top-32 left-24 w-40 md:block"
+    class="hidden absolute top-32 left-24 w-40 md:block hover:animate-ping"
     :src="require('../assets/resume.svg')"
     alt="svg"
   />
@@ -8,7 +8,7 @@
     class="my-card relative max-w-md mx-auto md:max-w-3xl mt-6 min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-32"
   >
     <img
-      class="hidden absolute top-10 right-10 w-40 md:block transform -rotate-45 cursor-pointer"
+      class="hidden absolute top-10 right-10 w-40 md:block transform -rotate-45 cursor-pointer hover:rotate-0 duration-300"
       :src="require('../assets/hire-me.svg')"
       alt="svg"
     />
@@ -18,7 +18,7 @@
           <div class="relative">
             <img
               :src="require('../assets/ahmed.jpg')"
-              class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px]"
+              class="shadow-xl rounded-full align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-[150px] hover:animate-bounce"
               alt="Ahmed Image"
             />
           </div>
