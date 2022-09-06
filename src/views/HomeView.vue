@@ -1,22 +1,39 @@
 <template>
-  <NavbarComp />
-  <ContactSlide />
-  <div class="relative overflow-hidden bg-white">
+  <div class="relative overflow-hidden">
     <div class="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-40 lg:pb-48">
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">
           <h1
-            class="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+            class="text-4xl font-bold tracking-tight text-gray-900 sm:text-4xl md:text-5xl"
           >
-            Summer styles are finally here
+            <span class="block xl:inline">Hi, I'm</span>
+            {{ " " }}
+            <span class="block text-indigo-600 xl:inline">Ahmed El-Sayed</span>
           </h1>
-          <p class="mt-4 text-xl text-gray-500">
-            This year, our new summer collection will shelter you from the harsh
-            elements of a world that doesn't care if you live or die.
+          <p
+            class="mt-3 text-base text-gray-500 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0"
+          >
+            Full-Stack Web developer
           </p>
+          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+            <div class="rounded-md shadow">
+              <router-link
+                to="/projects"
+                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 md:py-4 md:px-10 md:text-lg"
+                >My Projects</router-link
+              >
+            </div>
+            <div class="mt-3 sm:mt-0 sm:ml-3">
+              <a
+                href="#"
+                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-100 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-200 md:py-4 md:px-10 md:text-lg"
+                >Download CV</a
+              >
+            </div>
+          </div>
         </div>
         <div>
-          <div class="mt-10">
+          <div class="mt-12">
             <!-- Decorative image grid -->
             <div
               aria-hidden="true"
@@ -92,30 +109,76 @@
                 </div>
               </div>
             </div>
-
-            <a
-              href="#"
-              class="inline-block rounded-md border border-transparent bg-indigo-600 py-3 px-8 text-center font-medium text-white hover:bg-indigo-700"
-              >Shop Collection</a
-            >
           </div>
         </div>
       </div>
     </div>
   </div>
-  <FooterComp />
+  <!--    banner-->
+  <div
+    class="mt-20 mx-auto max-w-7xl bg-indigo-600 rounded-2xl"
+    v-show="showBanner"
+  >
+    <div class="mx-auto max-w-7xl py-3 px-3 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between">
+        <div class="flex w-0 flex-1 items-center">
+          <span class="flex rounded-lg bg-indigo-800 p-2">
+            <MegaphoneIcon class="h-6 w-6 text-white" aria-hidden="true" />
+          </span>
+          <p class="ml-3 truncate font-medium text-white">
+            <span class="md:hidden">I announced new blog!</span>
+            <span class="hidden md:inline"
+              >Big news! I'm excited to a announced new blog.</span
+            >
+          </p>
+        </div>
+        <div
+          class="order-3 mt-2 w-full flex-shrink-0 sm:order-2 sm:mt-0 sm:w-auto"
+        >
+          <router-link
+            to="/blog"
+            class="flex items-center justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-indigo-600 shadow-sm hover:bg-indigo-50"
+            >Visit Blog</router-link
+          >
+        </div>
+        <div class="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
+          <button
+            @click="showBanner = false"
+            type="button"
+            class="-mr-1 flex rounded-md p-2 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-white sm:-mr-2"
+          >
+            <span class="sr-only">Dismiss</span>
+            <XMarkIcon class="h-6 w-6 text-white" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--      banner-->
 </template>
 
+<style>
+html,
+body {
+  background-image: url("~@/assets/beams-home.jpg") !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+</style>
+
 <script>
-import FooterComp from "@/components/FooterComp";
-import NavbarComp from "@/components/NavbarComp";
-import ContactSlide from "@/components/ContactSlide";
+import { MegaphoneIcon, XMarkIcon } from "@heroicons/vue/24/outline";
 export default {
   name: "HomeView",
+  data() {
+    return {
+      showBanner: true,
+    };
+  },
   components: {
-    ContactSlide,
-    NavbarComp,
-    FooterComp,
+    MegaphoneIcon,
+    XMarkIcon,
   },
 };
 </script>

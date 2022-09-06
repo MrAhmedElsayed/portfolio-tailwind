@@ -34,113 +34,138 @@
                 <div
                   class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"
                 >
-                  <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
-                    <div class="flex items-start justify-between">
-                      <DialogTitle class="text-lg font-medium text-gray-900"
-                        >Shopping cart</DialogTitle
-                      >
-                      <div class="ml-3 flex h-7 items-center">
-                        <button
-                          type="button"
-                          class="-m-2 p-2 text-gray-400 hover:text-gray-500"
-                          @click="slideOpen = false"
+                  <form method="post" @submit.prevent="submitMessage">
+                    <div class="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
+                      <div class="flex items-start justify-between">
+                        <DialogTitle
+                          class="flex text-lg font-medium text-gray-900"
                         >
-                          <span class="sr-only">Close panel</span>
-                          <XMarkIcon class="h-6 w-6" aria-hidden="true" />
-                        </button>
-                      </div>
-                    </div>
-
-                    <div class="mt-8">
-                      <div class="flow-root">
-                        <ul role="list" class="-my-6 divide-y divide-gray-200">
-                          <li
-                            v-for="product in products"
-                            :key="product.id"
-                            class="flex py-6"
+                          <div
+                            class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4"
                           >
-                            <div
-                              class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
-                            >
-                              <img
-                                :src="product.imageSrc"
-                                :alt="product.imageAlt"
-                                class="h-full w-full object-cover object-center"
+                            <ChatBubbleLeftEllipsisIcon
+                              class="w-6 h-6"
+                              aria-hidden="true"
+                            />
+                          </div>
+                          <span class="ml-3 my-1">Contact Me</span>
+                        </DialogTitle>
+                        <div class="ml-3 flex h-7 items-center">
+                          <button
+                            type="button"
+                            class="-m-2 p-2 text-gray-400 hover:text-gray-500"
+                            @click="slideOpen = false"
+                          >
+                            <span class="sr-only">Close panel</span>
+                            <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                          </button>
+                        </div>
+                      </div>
+                      <div class="mt-8">
+                        <div class="flow-root">
+                          <div class="grid grid-cols-6 gap-6">
+                            <div class="col-span-6 sm:col-span-3">
+                              <label
+                                for="first-name"
+                                class="block text-sm font-medium text-gray-700"
+                                >First name</label
+                              >
+                              <input
+                                type="text"
+                                name="first-name"
+                                v-model="firstName"
+                                autocomplete="given-name"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                               />
                             </div>
 
-                            <div class="ml-4 flex flex-1 flex-col">
-                              <div>
-                                <div
-                                  class="flex justify-between text-base font-medium text-gray-900"
-                                >
-                                  <h3>
-                                    <a :href="product.href">{{
-                                      product.name
-                                    }}</a>
-                                  </h3>
-                                  <p class="ml-4">{{ product.price }}</p>
-                                </div>
-                                <p class="mt-1 text-sm text-gray-500">
-                                  {{ product.color }}
-                                </p>
-                              </div>
-                              <div
-                                class="flex flex-1 items-end justify-between text-sm"
+                            <div class="col-span-6 sm:col-span-3">
+                              <label
+                                for="last-name"
+                                class="block text-sm font-medium text-gray-700"
+                                >Last name</label
                               >
-                                <p class="text-gray-500">
-                                  Qty {{ product.quantity }}
-                                </p>
-
-                                <div class="flex">
-                                  <button
-                                    type="button"
-                                    class="font-medium text-indigo-600 hover:text-indigo-500"
-                                  >
-                                    Remove
-                                  </button>
-                                </div>
-                              </div>
+                              <input
+                                type="text"
+                                name="last-name"
+                                v-model="lastName"
+                                autocomplete="family-name"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                              />
                             </div>
-                          </li>
-                        </ul>
+
+                            <div class="col-span-6">
+                              <label
+                                for="email-address"
+                                class="block text-sm font-medium text-gray-700"
+                                >Email address</label
+                              >
+                              <input
+                                type="text"
+                                name="email-address"
+                                v-model="emailAddress"
+                                autocomplete="email"
+                                placeholder="example@mail.com"
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                              />
+                            </div>
+                            <div class="col-span-6">
+                              <label
+                                for="message"
+                                class="block text-sm font-medium text-gray-700"
+                                >Message</label
+                              >
+                              <div class="mt-1">
+                                <textarea
+                                  v-model="message"
+                                  name="message"
+                                  rows="6"
+                                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                                  placeholder="hi my name is ahmed i want a websit that ..."
+                                />
+                              </div>
+                              <p class="mt-2 text-sm text-gray-500">
+                                Brief description for your dream project.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
-                    <div
-                      class="flex justify-between text-base font-medium text-gray-900"
-                    >
-                      <p>Subtotal</p>
-                      <p>$262.00</p>
-                    </div>
-                    <p class="mt-0.5 text-sm text-gray-500">
-                      Shipping and taxes calculated at checkout.
-                    </p>
-                    <div class="mt-6">
-                      <a
-                        href="#"
-                        class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                        >Checkout</a
-                      >
-                    </div>
-                    <div
-                      class="mt-6 flex justify-center text-center text-sm text-gray-500"
-                    >
-                      <p>
-                        or
-                        <button
-                          type="button"
-                          class="font-medium text-indigo-600 hover:text-indigo-500"
-                          @click="slideOpen = false"
-                        >
-                          Continue Shopping
-                          <span aria-hidden="true"> &rarr;</span>
-                        </button>
+                    <div class="border-t border-gray-200 py-6 px-4 sm:px-6">
+                      <div
+                        class="flex justify-between text-base font-medium text-gray-900"
+                      ></div>
+                      <p class="mt-0.5 text-sm text-gray-500">
+                        I will reply as soon as I receive your message
                       </p>
+                      <div class="mt-6">
+                        <button
+                          type="submit"
+                          class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        >
+                          SEND
+                        </button>
+                      </div>
+
+                      <div
+                        class="mt-6 flex justify-center text-center text-sm text-gray-500"
+                      >
+                        <p>
+                          or
+                          <router-link
+                            target="_blank"
+                            to="/blog"
+                            type="button"
+                            class="font-medium text-indigo-600 hover:text-indigo-500"
+                          >
+                            First see my Blog
+                            <span aria-hidden="true"> &rarr;</span>
+                          </router-link>
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </DialogPanel>
             </TransitionChild>
@@ -159,7 +184,10 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import { XMarkIcon } from "@heroicons/vue/24/outline";
+import {
+  XMarkIcon,
+  ChatBubbleLeftEllipsisIcon,
+} from "@heroicons/vue/24/outline";
 
 export default {
   name: "ContactSlide",
@@ -168,33 +196,10 @@ export default {
   },
   data: () => ({
     slideOpen: true,
-    products: [
-      {
-        id: 1,
-        name: "Throwback Hip Bag",
-        href: "#",
-        color: "Salmon",
-        price: "$90.00",
-        quantity: 1,
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-        imageAlt:
-          "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-      },
-      {
-        id: 2,
-        name: "Medium Stuff Satchel",
-        href: "#",
-        color: "Blue",
-        price: "$32.00",
-        quantity: 1,
-        imageSrc:
-          "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-        imageAlt:
-          "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-      },
-      // More products...
-    ],
+    firstName: "",
+    lastName: "",
+    emailAddress: "",
+    message: "",
   }),
   components: {
     Dialog,
@@ -203,6 +208,16 @@ export default {
     TransitionChild,
     TransitionRoot,
     XMarkIcon,
+    ChatBubbleLeftEllipsisIcon,
+  },
+  methods: {
+    submitMessage() {
+      console.log("submit");
+      this.firstName = "";
+      this.lastName = "";
+      this.emailAddress = "";
+      this.message = "";
+    },
   },
 };
 </script>
