@@ -1,5 +1,6 @@
 <template>
   <Switch
+    @click="btnChange"
     v-model="radioEnabled"
     :class="
       radioEnabled
@@ -94,9 +95,46 @@ export default {
     Switch,
     SunIcon,
   },
+  mounted() {
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+
+    // Whenever the user explicitly chooses light mode
+    localStorage.theme = "light";
+
+    // Whenever the user explicitly chooses dark mode
+    localStorage.theme = "dark";
+
+    // Whenever the user explicitly chooses to respect the OS preference
+    localStorage.removeItem("theme");
+  },
   methods: {
     btnChange() {
-      console.log(this.radioEnabled);
+      if (this.radioEnabled) {
+        document.body.classList.remove(
+          "bg-gradient-to-r",
+          "from-gray-700",
+          "via-gray-900",
+          "to-black"
+        );
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+        document.body.classList.add(
+          "bg-gradient-to-r",
+          "from-gray-700",
+          "via-gray-900",
+          "to-black"
+        );
+      }
     },
   },
 };

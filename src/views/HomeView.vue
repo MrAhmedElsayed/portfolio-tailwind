@@ -157,7 +157,7 @@
   <!--      banner-->
 </template>
 
-<style>
+<style scoped>
 html,
 body {
   background-image: url("~@/assets/beams-home.jpg") !important;
