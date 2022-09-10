@@ -1,5 +1,7 @@
 <template>
-  <h1>skills view</h1>
+  <div>
+    <h1>skills view</h1>
+  </div>
 </template>
 
 <script>

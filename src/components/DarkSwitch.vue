@@ -123,7 +123,8 @@ export default {
           "bg-gradient-to-r",
           "from-gray-700",
           "via-gray-900",
-          "to-black"
+          "to-black",
+          "z-0"
         );
         document.documentElement.classList.remove("dark");
       } else {
@@ -132,7 +133,8 @@ export default {
           "bg-gradient-to-r",
           "from-gray-700",
           "via-gray-900",
-          "to-black"
+          "to-black",
+          "z-0"
         );
       }
     },

@@ -195,7 +195,7 @@ export default {
     // slideOpen: false,
   },
   data: () => ({
-    slideOpen: true,
+    slideOpen: false,
     firstName: "",
     lastName: "",
     emailAddress: "",

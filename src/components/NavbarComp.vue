@@ -1,8 +1,8 @@
 <template>
-  <Popover class="relative bg-white">
+  <Popover class="relative bg-white dark:bg-slate-800">
     <div class="mx-auto max-w-7xl px-4 sm:px-6">
       <div
-        class="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10"
+        class="flex items-center justify-between border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10 dark:border-none"
       >
         <div class="flex justify-start lg:w-0 lg:flex-1">
           <router-link to="/">
@@ -25,17 +25,17 @@
         <PopoverGroup as="nav" class="hidden space-x-10 md:flex">
           <router-link
             to="/"
-            class="text-base font-medium text-gray-500 hover:text-gray-900"
+            class="text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
             >Home</router-link
           >
           <router-link
             to="/projects"
-            class="text-base font-medium text-gray-500 hover:text-gray-900"
+            class="text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
             >Projects</router-link
           >
           <router-link
             to="/about-me"
-            class="text-base font-medium text-gray-500 hover:text-gray-900"
+            class="text-base font-medium text-gray-500 hover:text-gray-900 dark:hover:text-gray-100"
             >About Me</router-link
           >
         </PopoverGroup>
